@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import TestContext from '../context/TestContext';
+
 
 function Contratos() {
+  const { cnpj } = useContext(TestContext);
 
   return (
-<h1>Contratos</h1>
+    <div>
+      <h1>Contratos</h1>
+      <span> { cnpj.cnpj } </span>
+    </div>
   )
 }
 
