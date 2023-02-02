@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import TestContext from '../context/TestContext';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import logo from '../data/logo.png';
 import contracts from '../data/contracts';
 
@@ -72,6 +73,7 @@ function Contratos() {
 
       { errorContratos && <span>{ errorContratos }</span>}
 
+      <Footer />
     </div>
   );
 }
