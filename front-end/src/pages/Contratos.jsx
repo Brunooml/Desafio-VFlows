@@ -54,8 +54,6 @@ function Contratos() {
             <th>Nome do Contrato</th>
             <th>Código do Contrato</th>
             <th>Retenção Técnica</th>
-            <th>Detalhes</th>
-            <th>{}</th>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +63,6 @@ function Contratos() {
               <td>{contrato.nome_contrato}</td>
               <td>{contrato.codigo_contrato}</td>
               <td>{contrato.percentual_retencao_tecnica}</td>
-              <td><button type="submit">Q</button></td>
             </tr>
           ))}
         </tbody>

@@ -45,7 +45,7 @@ function Acesso() {
       <img src={logo} width="100" alt="logo" />
       <h3>Pagamento de Fornecedor</h3>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <InputAcesso name="cnpj" onKeyUp={maskCnpj} />
+        <InputAcesso name="cnpj" maxLength={18} onKeyUp={maskCnpj} />
         <button type="submit">Acessar</button>
       </Form>
     </div>
