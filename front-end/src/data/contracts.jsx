@@ -1,7 +1,7 @@
 const contracts = [
   {
     header: {
-      cnpj: '12345678901234',
+      cnpj: '12.345.678/0001-90',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -34,7 +34,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901235',
+      cnpj: '12.345.678/0001-91',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -67,7 +67,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901236',
+      cnpj: '12.345.678/0001-92',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -100,7 +100,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901237',
+      cnpj: '12.345.678/0001-93',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -133,7 +133,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901238',
+      cnpj: '12.345.678/0001-94',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -166,7 +166,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901239',
+      cnpj: '12.345.678/0001-95',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -199,7 +199,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901230',
+      cnpj: '12.345.678/0001-96',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -232,7 +232,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901231',
+      cnpj: '12.345.678/0001-97',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -265,7 +265,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901232',
+      cnpj: '12.345.678/0001-98',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },
@@ -298,7 +298,7 @@ const contracts = [
   },
   {
     header: {
-      cnpj: '12345678901233',
+      cnpj: '12.345.678/0001-99',
       razao_social: 'Razão Social do Fornecedor Logado',
       nome_fantasia: 'Nome Fantasia do Fornecedor Logado',
     },

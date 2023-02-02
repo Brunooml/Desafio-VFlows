@@ -23,10 +23,21 @@ function Acesso() {
   };
 
   const handleSubmit = (data) => {
-    if (data.cnpj.length !== 14 || !(/^\d+$/.test(data.cnpj))) {
+    const regex = /^[\d@#$%^&*(),.?":{}|<>]+$/;
+    if (data.cnpj.length !== 18 || regex.test(data.cnpj)) {
       return formRef.current.setFieldError('cnpj', 'CNPJ inválido');
     }
     return login(data.cnpj);
+  };
+
+  const maskCnpj = (e) => {
+    let cnpj = e.target.value;
+    cnpj = cnpj.replace(/\D/g, '');
+    cnpj = cnpj.replace(/(\d{2})(\d)/, '$1.$2');
+    cnpj = cnpj.replace(/(\d{3})(\d)/, '$1.$2');
+    cnpj = cnpj.replace(/(\d{3})(\d)/, '$1/$2');
+    cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2');
+    e.target.value = cnpj;
   };
 
   return (
@@ -34,7 +45,7 @@ function Acesso() {
       <img src={logo} width="100" alt="logo" />
       <h3>Pagamento de Fornecedor</h3>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <InputAcesso maxLength={14} name="cnpj" />
+        <InputAcesso name="cnpj" onKeyUp={maskCnpj} />
         <button type="submit">Acessar</button>
       </Form>
     </div>
