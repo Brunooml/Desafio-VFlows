@@ -12,7 +12,7 @@ function Acesso() {
   const history = useHistory();
 
   const login = (data) => {
-    const resposta = users.find((element) => element.cnpj === data);
+    const resposta = users.find((user) => user.cnpj === data);
     if (!resposta) {
       return formRef.current.setFieldError('cnpj', 'CNPJ sem contratos ativos');
     }

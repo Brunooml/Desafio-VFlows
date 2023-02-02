@@ -5,10 +5,16 @@ import TestContext from './TestContext';
 
 function TestProvider({ children }) {
   const [cnpj, setCnpj] = useState('');
+  const [check, setCheck] = useState('');
+  const [errorContratos, setErrorContratos] = useState('');
 
   const contextValue = {
     cnpj,
     setCnpj,
+    check,
+    setCheck,
+    errorContratos,
+    setErrorContratos,
   };
 
   return (

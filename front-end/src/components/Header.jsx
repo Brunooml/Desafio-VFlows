@@ -8,11 +8,20 @@ function Header() {
     <div>
       { contracts.filter((element) => element.header.cnpj === cnpj.cnpj).map((contrato) => (
         <div key={contrato.id}>
-          <span>{ contrato.header.cnpj }</span>
+          <span>
+            <p>CNPJ:</p>
+            { contrato.header.cnpj }
+          </span>
           <br />
-          <span>{ contrato.header.razao_social }</span>
+          <span>
+            <p>Razão Social:</p>
+            { contrato.header.razao_social }
+          </span>
           <br />
-          <span>{ contrato.header.nome_fantasia }</span>
+          <span>
+            <p>Nome Fantasia:</p>
+            { contrato.header.nome_fantasia }
+          </span>
         </div>
       )) }
     </div>

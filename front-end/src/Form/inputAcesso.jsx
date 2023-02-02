@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
+import PropTypes from 'prop-types';
 
 function InputAcesso({ name, ...rest }) {
   const inputRef = useRef(null);
@@ -26,5 +26,9 @@ function InputAcesso({ name, ...rest }) {
     </div>
   );
 }
+
+InputAcesso.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default InputAcesso;
