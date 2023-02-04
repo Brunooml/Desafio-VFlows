@@ -87,7 +87,7 @@ function Notas() {
       return formRef.current.setFieldError('Data de Vencimento', 'Data de Vencimento Obrigatório');
     }
 
-    if (!(transformedObj.valor)) {
+    if (!(transformedObj.valor) || Number(transformedObj.valor < 1)) {
       return formRef.current.setFieldError('Valor', 'Valor Obrigatório');
     }
 
