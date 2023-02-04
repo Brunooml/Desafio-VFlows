@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
 
-function InputAcesso({ name, ...rest }) {
+function Checkbox({ name, label, ...rest }) {
   const inputRef = useRef(null);
   const {
     fieldName, registerField, error,
@@ -20,15 +20,18 @@ function InputAcesso({ name, ...rest }) {
 
   return (
     <div>
-      <input ref={inputRef} {...rest} />
+      <label htmlFor={fieldName} key={fieldName}>{fieldName}</label>
+      <br />
+      <input ref={inputRef} type="checkbox" {...rest} />
 
       { error && <span>{ error }</span>}
     </div>
   );
 }
 
-InputAcesso.propTypes = {
+Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
-export default InputAcesso;
+export default Checkbox;

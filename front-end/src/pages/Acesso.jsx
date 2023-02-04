@@ -2,7 +2,7 @@ import React, { useRef, useContext } from 'react';
 import { Form } from '@unform/web';
 import { useHistory } from 'react-router-dom';
 import TestContext from '../context/TestContext';
-import InputAcesso from '../Form/inputAcesso';
+import Input from '../Form/input';
 import users from '../data/users';
 import logo from '../data/logo.png';
 
@@ -14,7 +14,7 @@ function Acesso() {
   const login = (data) => {
     const resposta = users.find((user) => user.cnpj === data);
     if (!resposta) {
-      return formRef.current.setFieldError('cnpj', 'CNPJ sem contratos ativos');
+      return formRef.current.setFieldError('CNPJ', 'CNPJ sem contratos ativos');
     }
 
     return (
@@ -24,10 +24,10 @@ function Acesso() {
 
   const handleSubmit = (data) => {
     const regex = /^[\d@#$%^&*(),.?":{}|<>]+$/;
-    if (data.cnpj.length !== 18 || regex.test(data.cnpj)) {
-      return formRef.current.setFieldError('cnpj', 'CNPJ inválido');
+    if (data.CNPJ.length !== 18 || regex.test(data.CNPJ)) {
+      return formRef.current.setFieldError('CNPJ', 'CNPJ inválido');
     }
-    return login(data.cnpj);
+    return login(data.CNPJ);
   };
 
   const maskCnpj = (e) => {
@@ -42,10 +42,12 @@ function Acesso() {
 
   return (
     <div>
-      <img src={logo} width="100" alt="logo" />
-      <h3>Pagamento de Fornecedor</h3>
+      <div>
+        <img src={logo} width="100" alt="logo" />
+        <h3>Pagamento de Fornecedor</h3>
+      </div>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <InputAcesso name="cnpj" maxLength={18} onKeyUp={maskCnpj} />
+        <Input name="CNPJ" maxLength={18} onKeyUp={maskCnpj} />
         <button type="submit">Acessar</button>
       </Form>
     </div>

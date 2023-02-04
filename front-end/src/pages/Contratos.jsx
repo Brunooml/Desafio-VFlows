@@ -14,6 +14,7 @@ function Contratos() {
     setCheck,
     errorContratos,
     setErrorContratos,
+    setContratosCnpj,
   } = useContext(TestContext);
   const history = useHistory();
 
@@ -39,19 +40,22 @@ function Contratos() {
     if (check.length === 0) {
       return setErrorContratos('Ao menos um Contrato deverá ser selecionado');
     }
-    return (history.push('/notas'));
+    return (history.push('/notas'), setContratosCnpj(contratos));
   };
 
   return (
     <div>
-      <img src={logo} width="100" alt="logo" />
-      <h3>Pagamento de Fornecedor</h3>
+      <div>
+        <img src={logo} width="100" alt="logo" />
+        <h3>Pagamento de Fornecedor</h3>
+      </div>
       <Header />
-      <h6>Contratos Vinculado</h6>
+      <div>
+        <h6>Contratos Vinculado</h6>
+      </div>
       <table>
         <thead>
           <tr>
-            <th>{}</th>
             <th>Nome do Contrato</th>
             <th>Código do Contrato</th>
             <th>Retenção Técnica</th>
@@ -67,12 +71,11 @@ function Contratos() {
             </tr>
           ))}
         </tbody>
+        <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
+        <button type="submit" onClick={handleSubmitNext}>Próximo</button>
+        <br />
       </table>
-      <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
-      <button type="submit" onClick={handleSubmitNext}>Próximo</button>
-
       { errorContratos && <span>{ errorContratos }</span>}
-
       <Footer />
     </div>
   );

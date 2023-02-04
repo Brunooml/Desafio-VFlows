@@ -7,6 +7,11 @@ function TestProvider({ children }) {
   const [cnpj, setCnpj] = useState('');
   const [check, setCheck] = useState('');
   const [errorContratos, setErrorContratos] = useState('');
+  const [contratosCnpj, setContratosCnpj] = useState('');
+  const [checkboxRetencaoImpostos, setCheckboxRetencaoImpostos] = useState(false);
+  const [checkboxRetencaoTecnica, setCheckboxRetencaoTecnica] = useState(false);
+  const [dataRetencaoValor, setDataRetencaoValor] = useState('');
+  const [files, setFiles] = useState('');
 
   const contextValue = {
     cnpj,
@@ -15,6 +20,16 @@ function TestProvider({ children }) {
     setCheck,
     errorContratos,
     setErrorContratos,
+    contratosCnpj,
+    setContratosCnpj,
+    checkboxRetencaoImpostos,
+    setCheckboxRetencaoImpostos,
+    checkboxRetencaoTecnica,
+    setCheckboxRetencaoTecnica,
+    dataRetencaoValor,
+    setDataRetencaoValor,
+    files,
+    setFiles,
   };
 
   return (
