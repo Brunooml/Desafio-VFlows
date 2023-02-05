@@ -128,34 +128,31 @@ function Notas() {
 
   return (
     <div>
-      <div>
-        <img src={logo} width="100" alt="logo" />
-        <h3>Pagamento de Fornecedor</h3>
-      </div>
+      <nav>
+        <img src={logo} alt="logo" />
+        <p>Pagamento de Fornecedor</p>
+      </nav>
       <Header />
-      <div>
-        <h6>Dados da Nota Fiscal</h6>
-      </div>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <span>
-          <p>Código do Contrato:</p>
-          {contrato.codigo_contrato}
-        </span>
-        <br />
-        <br />
-        <span>
-          {contrato.nome_contrato}
-        </span>
-        <br />
-        <br />
-        <Input name="Número da Nota" onKeyUp={maskNumbers} />
-        <Input name="Data de Emissão" type="date" />
-        <Input name="Data de Vencimento" type="date" />
-        <Input name="Valor" onKeyUp={maskNumbers} onBlur={handleBlur} />
-        <Checkbox name="Retenção de Impostos" type="checkbox" checked={checkboxRetencaoImpostos} onClick={retencaoClickImpostos} />
-        { checkboxRetencaoImpostos
+      <section>
+        <p>Dados da Nota Fiscal</p>
+      </section>
+      <main>
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <span>
+            <p>Código do Contrato:</p>
+            {contrato.codigo_contrato}
+          </span>
+          <span>
+            {contrato.nome_contrato}
+          </span>
+          <Input name="Número da Nota" onKeyUp={maskNumbers} />
+          <Input name="Data de Emissão" type="date" />
+          <Input name="Data de Vencimento" type="date" />
+          <Input name="Valor" onKeyUp={maskNumbers} onBlur={handleBlur} />
+          <Checkbox name="Retenção de Impostos" type="checkbox" checked={checkboxRetencaoImpostos} onClick={retencaoClickImpostos} />
+          { checkboxRetencaoImpostos
           && (
-          <div>
+          <section>
             <label>Dados de Impostos</label>
             <Input name="ISSQN" onKeyUp={maskNumbers} />
             <Input name="IRRF" onKeyUp={maskNumbers} />
@@ -163,37 +160,38 @@ function Notas() {
             <Input name="COFINS" onKeyUp={maskNumbers} />
             <Input name="INSS" onKeyUp={maskNumbers} />
             <Input name="PIS" onKeyUp={maskNumbers} />
-          </div>
+          </section>
           )}
-        <Checkbox name="Retenção Técnica" type="checkbox" checked={checkboxRetencaoTecnica} onClick={retencaoClickTecnica} />
-        { checkboxRetencaoTecnica
+          <Checkbox name="Retenção Técnica" type="checkbox" checked={checkboxRetencaoTecnica} onClick={retencaoClickTecnica} />
+          { checkboxRetencaoTecnica
           && (
-            <div>
+            <section>
               <label>Dados da Retenção Técnica</label>
               <Input name="Valor da Retenção Tecnica" value={dataRetencaoValor} />
               <Input name="Percentual" value={contrato.percentual_retencao_tecnica} />
-            </div>
+            </section>
           )}
-        <label>Anexar Nota Fiscal</label>
-        <input type="file" onChange={handleFile} />
-        {
+          <label>Anexar Nota Fiscal</label>
+          <input type="file" onChange={handleFile} />
+          {
           files
           && (
-            <div>
+            <section>
               {
                 files.map((file) => (
-                  <div>
+                  <article>
                     <span>{file.name}</span>
                     <input type="button" name={file.name} onClick={handleBtnFile} />
-                  </div>
+                  </article>
                 ))
               }
-            </div>
+            </section>
           )
         }
-        <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
-        <button type="submit">Próxima</button>
-      </Form>
+          <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
+          <button type="submit">Próxima</button>
+        </Form>
+      </main>
       <Footer />
     </div>
   );

@@ -21,9 +21,7 @@ function Input({ name, label, ...rest }) {
   return (
     <div>
       <label htmlFor={fieldName} key={fieldName}>{fieldName}</label>
-      <br />
       <input ref={inputRef} {...rest} />
-
       { error && <span>{ error }</span>}
     </div>
   );

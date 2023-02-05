@@ -45,37 +45,39 @@ function Contratos() {
 
   return (
     <div>
-      <div>
-        <img src={logo} width="100" alt="logo" />
-        <h3>Pagamento de Fornecedor</h3>
-      </div>
+      <nav>
+        <img src={logo} alt="logo" />
+        <p>Pagamento de Fornecedor</p>
+      </nav>
       <Header />
-      <div>
-        <h6>Contratos Vinculado</h6>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome do Contrato</th>
-            <th>Código do Contrato</th>
-            <th>Retenção Técnica</th>
-          </tr>
-        </thead>
-        <tbody>
-          { contratos.map((contrato) => (
-            <tr key={contrato.id}>
-              <td><input type="checkbox" name={contrato.id} onClick={(e) => handleClick(e)} /></td>
-              <td>{contrato.nome_contrato}</td>
-              <td>{contrato.codigo_contrato}</td>
-              <td>{contrato.percentual_retencao_tecnica}</td>
+      <section>
+        <p>Contratos Vinculado</p>
+      </section>
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th>{}</th>
+              <th>Nome do Contrato</th>
+              <th>Código do Contrato</th>
+              <th>Retenção Técnica</th>
             </tr>
-          ))}
-        </tbody>
-        <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
-        <button type="submit" onClick={handleSubmitNext}>Próximo</button>
-        <br />
-      </table>
-      { errorContratos && <span>{ errorContratos }</span>}
+          </thead>
+          <tbody>
+            { contratos.map((contrato) => (
+              <tr key={contrato.id}>
+                <td><input type="checkbox" name={contrato.id} onClick={(e) => handleClick(e)} /></td>
+                <td>{contrato.nome_contrato}</td>
+                <td>{contrato.codigo_contrato}</td>
+                <td>{contrato.percentual_retencao_tecnica}</td>
+              </tr>
+            ))}
+          </tbody>
+          <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
+          <button type="submit" onClick={handleSubmitNext}>Próximo</button>
+        </table>
+        { errorContratos && <span>{ errorContratos }</span>}
+      </main>
       <Footer />
     </div>
   );

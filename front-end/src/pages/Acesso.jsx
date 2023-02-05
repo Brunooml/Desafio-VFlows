@@ -42,14 +42,16 @@ function Acesso() {
 
   return (
     <div>
-      <div>
-        <img src={logo} width="100" alt="logo" />
-        <h3>Pagamento de Fornecedor</h3>
-      </div>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="CNPJ" maxLength={18} onKeyUp={maskCnpj} />
-        <button type="submit">Acessar</button>
-      </Form>
+      <nav>
+        <img src={logo} alt="logo" />
+        <p>Pagamento de Fornecedor</p>
+      </nav>
+      <main>
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input name="CNPJ" maxLength={18} onKeyUp={maskCnpj} />
+          <button type="submit">Acessar</button>
+        </Form>
+      </main>
     </div>
   );
 }
