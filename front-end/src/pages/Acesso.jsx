@@ -5,6 +5,7 @@ import TestContext from '../context/TestContext';
 import Input from '../Form/input';
 import users from '../data/users';
 import logo from '../data/logo.png';
+import '../index.css';
 
 function Acesso() {
   const { setCnpj } = useContext(TestContext);
