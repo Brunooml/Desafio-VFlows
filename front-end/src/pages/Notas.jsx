@@ -1,9 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable no-sequences */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef, useContext } from 'react';
 import { Form } from '@unform/web';
 import { useHistory } from 'react-router-dom';

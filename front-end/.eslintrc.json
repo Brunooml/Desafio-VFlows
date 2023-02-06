@@ -17,5 +17,13 @@
         "react"
     ],
     "rules": {
+        "react/jsx-no-constructed-context-values": "off",
+        "react/jsx-props-no-spreading": "off",
+        "no-sequences": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "no-alert": "off",
+        "no-console": "off"
     }
 }
