@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable no-sequences */
@@ -8,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import logo from '../data/logo.png';
+import trash from '../data/trash.png';
 import TestContext from '../context/TestContext';
 import Input from '../Form/input';
 import Checkbox from '../Form/checkbox';
@@ -44,7 +47,7 @@ function Notas() {
 
   const retencaoClickTecnica = () => setCheckboxRetencaoTecnica(!checkboxRetencaoTecnica);
 
-  const handleSubmitPrev = () => (history.push('/contratos'), setCheck(''), setFiles(''));
+  const handleSubmitPrev = () => (history.push('/contratos'), setCheck(''), setFiles(''), setDataRetencaoValor(''), setCheckboxRetencaoImpostos(''), setCheckboxRetencaoTecnica(''));
 
   let decimal = '';
 
@@ -64,11 +67,22 @@ function Notas() {
   const sendData = (data) => {
     console.log(data);
     alert('Solicitação 999999 foi enviada com sucesso.');
-    return (history.push('/'), setCheck(''), setCnpj(''), setContratosCnpj(''), setDataRetencaoValor(''), setFiles(''));
+    return (history.push('/'), setCheck(''), setCnpj(''), setContratosCnpj(''), setDataRetencaoValor(''), setFiles(''), setCheckboxRetencaoImpostos(''), setCheckboxRetencaoTecnica(''));
   };
 
   const handleSubmit = (ref) => {
     const transformedObj = {};
+
+    formRef.current.setFieldError('Número da Nota', '');
+    formRef.current.setFieldError('Data de Emissão', '');
+    formRef.current.setFieldError('Data de Vencimento', '');
+    formRef.current.setFieldError('Valor', '');
+    formRef.current.setFieldError('ISSQN', '');
+    formRef.current.setFieldError('IRRF', '');
+    formRef.current.setFieldError('CSLL', '');
+    formRef.current.setFieldError('COFINS', '');
+    formRef.current.setFieldError('INSS', '');
+    formRef.current.setFieldError('PIS', '');
 
     Object.keys(ref).forEach((key) => {
       const newKey = key.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '_').toLowerCase();
@@ -127,72 +141,86 @@ function Notas() {
   };
 
   return (
-    <div>
-      <nav>
-        <img src={logo} alt="logo" />
-        <p>Pagamento de Fornecedor</p>
-      </nav>
-      <Header />
-      <section>
-        <p>Dados da Nota Fiscal</p>
-      </section>
-      <main>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <span>
-            <p>Código do Contrato:</p>
-            {contrato.codigo_contrato}
-          </span>
-          <span>
-            {contrato.nome_contrato}
-          </span>
-          <Input name="Número da Nota" onKeyUp={maskNumbers} />
-          <Input name="Data de Emissão" type="date" />
-          <Input name="Data de Vencimento" type="date" />
-          <Input name="Valor" onKeyUp={maskNumbers} onBlur={handleBlur} />
-          <Checkbox name="Retenção de Impostos" type="checkbox" checked={checkboxRetencaoImpostos} onClick={retencaoClickImpostos} />
-          { checkboxRetencaoImpostos
+    <div className="bg-lime-50 min-h-screen flex items-center justify-center">
+      <div className="border-solid border border-lime-200 bg-white rounded-sm">
+        <nav className="flex p-4 items-center space-x-32 m-1">
+          <img src={logo} alt="logo" className="w-24 h-10" />
+          <p className="text-3xl">Pagamento de Fornecedor</p>
+        </nav>
+        <Header />
+        <section className="border-solid border border-lime-200 flex items-center justify-center m-1 p-1">
+          <p>Dados da Nota Fiscal</p>
+        </section>
+        <main className="border-solid border border-lime-200 m-1">
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <div className="flex p-2 space-x-28">
+              <span className="flex">
+                <p className="font-semibold">Código do Contrato:</p>
+                <p className="italic">{contrato.codigo_contrato}</p>
+              </span>
+              <span>
+                <p className="italic">{contrato.nome_contrato}</p>
+              </span>
+            </div>
+            <div className="flex p-1 space-x-5">
+              <Input name="Número da Nota" onKeyUp={maskNumbers} className="bg-white border border-stone-200 rounded pl-px w-40" />
+              <Input name="Data de Emissão" type="date" className="bg-white border border-stone-200 rounded w-40" />
+              <Input name="Data de Vencimento" type="date" className="bg-white border border-stone-200 rounded w-40" />
+              <span className="text-base items-end relative left-11 top-3.5">R$</span>
+              <Input name="Valor" nonKeyUp={maskNumbers} onBlur={handleBlur} className="bg-white border border-stone-200 rounded static pl-6 w-40" />
+            </div>
+            <Checkbox name="Retenção de Impostos" type="checkbox" checked={checkboxRetencaoImpostos} onClick={retencaoClickImpostos} className="flex mx-1 my-0.5" />
+            { checkboxRetencaoImpostos
           && (
-          <section>
-            <label>Dados de Impostos</label>
-            <Input name="ISSQN" onKeyUp={maskNumbers} />
-            <Input name="IRRF" onKeyUp={maskNumbers} />
-            <Input name="CSLL" onKeyUp={maskNumbers} />
-            <Input name="COFINS" onKeyUp={maskNumbers} />
-            <Input name="INSS" onKeyUp={maskNumbers} />
-            <Input name="PIS" onKeyUp={maskNumbers} />
+          <section className="flex m-1">
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="ISSQN" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="IRRF" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="CSLL" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="COFINS" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="INSS" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
+            <span className="text-base items-end relative left-7 top-3.5">R$</span>
+            <Input name="PIS" className="bg-white border border-stone-200 rounded static w-28 mx-1 pl-6" onKeyUp={maskNumbers} />
           </section>
           )}
-          <Checkbox name="Retenção Técnica" type="checkbox" checked={checkboxRetencaoTecnica} onClick={retencaoClickTecnica} />
-          { checkboxRetencaoTecnica
+            <Checkbox name="Retenção Técnica" type="checkbox" checked={checkboxRetencaoTecnica} onClick={retencaoClickTecnica} className="flex mx-1 my-0.5" />
+            { checkboxRetencaoTecnica
           && (
             <section>
-              <label>Dados da Retenção Técnica</label>
-              <Input name="Valor da Retenção Tecnica" value={dataRetencaoValor} />
-              <Input name="Percentual" value={contrato.percentual_retencao_tecnica} />
+              <span className="text-base flex items-end relative left-px top-10">R$</span>
+              <Input name="Valor da Retenção Técnica" value={dataRetencaoValor} className="bg-stone-300 border border-stone-200 rounded flex w-32 h-6 pl-5" />
+              <Input name="Percentual" value={contrato.percentual_retencao_tecnica} className="bg-stone-300 border border-stone-200 rounded flex w-32 h-6 pl-1" />
             </section>
           )}
-          <label>Anexar Nota Fiscal</label>
-          <input type="file" onChange={handleFile} />
-          {
+            <div>
+              <label htmlFor="arquivo" className="bg-stone-600 max-h-5 w-36 p-px m-1 mt-3 text-white flex items-center justify-center">Anexar Nota Fiscal</label>
+              <input type="file" id="arquivo" onChange={handleFile} className="hidden" />
+              {
           files
           && (
             <section>
               {
                 files.map((file) => (
-                  <article>
+                  <article className="flex items-baseline m-1">
                     <span>{file.name}</span>
-                    <input type="button" name={file.name} onClick={handleBtnFile} />
+                    <img src={trash} alt="trash" className="w-4 pl-1" name={file.name} onClick={handleBtnFile} />
                   </article>
                 ))
               }
             </section>
           )
         }
-          <button type="submit" onClick={handleSubmitPrev}>Anterior</button>
-          <button type="submit">Próxima</button>
-        </Form>
-      </main>
-      <Footer />
+            </div>
+            <button type="submit" onClick={handleSubmitPrev} className="bg-yellow-500 w-36 p-px m-1 text-white">Anterior</button>
+            <button type="submit" className="bg-green-700 w-36 p-px m-1 text-white">Próximo</button>
+          </Form>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

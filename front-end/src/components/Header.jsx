@@ -5,20 +5,20 @@ import contracts from '../data/contracts';
 function Header() {
   const { cnpj } = useContext(TestContext);
   return (
-    <header>
+    <header className="border-solid border border-lime-200 h-10 m-1 px-2 py-1 ">
       { contracts.filter((element) => element.header.cnpj === cnpj.cnpj).map((contrato) => (
-        <div key={contrato.id}>
+        <div className="flex space-x-10" key={contrato.id}>
           <span>
-            <p>CNPJ:</p>
-            { contrato.header.cnpj }
+            <p className="font-semibold">Razão Social:</p>
+            <p className="italic">{ contrato.header.razao_social }</p>
           </span>
           <span>
-            <p>Razão Social:</p>
-            { contrato.header.razao_social }
+            <p className="font-semibold">Nome Fantasia:</p>
+            <p className="italic">{ contrato.header.nome_fantasia }</p>
           </span>
           <span>
-            <p>Nome Fantasia:</p>
-            { contrato.header.nome_fantasia }
+            <p className="font-semibold">CNPJ:</p>
+            <p className="italic">{ contrato.header.cnpj }</p>
           </span>
         </div>
       )) }
